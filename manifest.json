@@ -1,6 +1,6 @@
 {
   "name": "Renbot Moderator Assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An assistant to make moderating on rendogtv on twitch easier.",
   "manifest_version": 3,
   "author": "Bjornar97",

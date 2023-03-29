@@ -66,9 +66,11 @@ onMounted(() => {
     <p class="not-logged-in" v-else-if="tokenValid === false">Not logged in</p>
 
     <div class="links">
-      <a href="https://renbot.net">Gå til renbot.net</a>
-      <a href="https://www.twitch.tv/rendogtv">RendogTV</a>
-      <a href="https://www.twitch.tv/moderator/rendogtv">Modview</a>
+      <a href="https://renbot.net" target="_blank">Go to renbot.net</a>
+      <a href="https://www.twitch.tv/rendogtv" target="_blank">RendogTV</a>
+      <a href="https://www.twitch.tv/moderator/rendogtv" target="_blank"
+        >Modview</a
+      >
     </div>
 
     <div>
