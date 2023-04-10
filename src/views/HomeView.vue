@@ -2,6 +2,12 @@
 import { ref, onMounted } from "vue";
 import browser from "webextension-polyfill";
 
+let domain = "https://renbot.net";
+
+if (browser.runtime.id === "komdeaocjociimaeieplaehfieihgcoi") {
+  domain = "http://localhost";
+}
+
 const rawToken = await browser.storage.local.get("token");
 
 const token = ref<string | null>(rawToken?.token);
@@ -19,7 +25,7 @@ const checkToken = async () => {
   console.log({ token: token.value });
 
   try {
-    const response = await fetch("https://renbot.net/api/is-authenticated", {
+    const response = await fetch(`${domain}/api/is-authenticated`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -49,10 +55,9 @@ const logout = () => {
 };
 
 const login = () => {
-  window.open(
-    "https://renbot.net/moderators/token?from-extension=true",
-    "_blank"
-  );
+  let url = `${domain}/moderators/token?from-extension=true`;
+
+  window.open(url, "_blank");
 };
 
 onMounted(() => {
@@ -68,9 +73,9 @@ onMounted(() => {
     <div class="links">
       <a href="https://renbot.net" target="_blank">Go to renbot.net</a>
       <a href="https://www.twitch.tv/rendogtv" target="_blank">RendogTV</a>
-      <a href="https://www.twitch.tv/moderator/rendogtv" target="_blank"
-        >Modview</a
-      >
+      <a href="https://www.twitch.tv/moderator/rendogtv" target="_blank">
+        Modview
+      </a>
     </div>
 
     <div>

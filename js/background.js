@@ -2,6 +2,12 @@ chrome.runtime.onInstalled.addListener(() => {});
 
 const validExternalOrigins = ["http://localhost", "https://renbot.net"];
 
+let domain = "https://renbot.net";
+
+if (chrome.runtime.id === "komdeaocjociimaeieplaehfieihgcoi") {
+  domain = "http://localhost";
+}
+
 chrome.runtime.onMessageExternal.addListener(
   (request, sender, sendResponse) => {
     console.log({
@@ -36,7 +42,7 @@ const validExtensionOrigins = [
 ];
 
 const getPunishableCommands = async (token) => {
-  const response = await fetch("https://renbot.net/api/punishable-commands", {
+  const response = await fetch(`${domain}/api/punishable-commands`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +55,7 @@ const getPunishableCommands = async (token) => {
 };
 
 const punish = async (token, command, user) => {
-  const response = await fetch("https://renbot.net/api/punish", {
+  const response = await fetch(`${domain}/api/punish`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

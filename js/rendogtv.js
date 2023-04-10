@@ -121,6 +121,8 @@ dialog.innerHTML = `
 
 document.body.appendChild(dialog);
 
+dialog.close();
+
 chrome.runtime
   .sendMessage({
     type: "getPunishableCommands",

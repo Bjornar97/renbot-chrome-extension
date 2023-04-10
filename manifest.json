@@ -1,6 +1,6 @@
 {
   "name": "Renbot Moderator Assistant",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "An assistant to make moderating on rendogtv on twitch easier.",
   "manifest_version": 3,
   "author": "Bjornar97",
@@ -24,11 +24,9 @@
       "js": ["js/rendogtv.js"]
     }
   ],
-  "permissions": [
-    "storage",
-    "tabs",
-    "webRequest",
-    "https://renbot.net/*",
-    "http://localhost/*"
-  ]
+  "permissions": ["storage"],
+  "icons": {
+    "48": "rendog-logo-48.png",
+    "128": "rendog-logo-128.png"
+  }
 }
