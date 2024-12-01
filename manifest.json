@@ -1,6 +1,6 @@
 {
   "name": "Renbot Moderator Assistant",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "An assistant to make moderating on rendogtv on twitch easier.",
   "manifest_version": 3,
   "author": "Bjornar97",
@@ -15,18 +15,20 @@
   "externally_connectable": {
     "matches": ["http://localhost/*", "https://renbot.net/*"]
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.twitch.tv/rendogtv",
-        "https://www.twitch.tv/moderator/rendogtv"
-      ],
-      "js": ["js/rendogtv.js"]
-    }
-  ],
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab", "tabs", "scripting"],
   "icons": {
     "48": "rendog-logo-48.png",
     "128": "rendog-logo-128.png"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["js/rendogtv.js"],
+      "matches": ["*://www.twitch.tv/*"]
+    },
+    {
+      "resources": ["css/rendogtv.css"],
+      "matches": ["*://www.twitch.tv/*"]
+    }
+  ],
+  "host_permissions": ["https://www.twitch.tv/*"]
 }

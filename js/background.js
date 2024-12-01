@@ -35,6 +35,47 @@ chrome.runtime.onMessageExternal.addListener(
   }
 );
 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (
+    tab.url &&
+    [
+      "https://www.twitch.tv/rendogtv",
+      "https://www.twitch.tv/moderator/rendogtv",
+    ].includes(tab.url)
+  ) {
+    if (changeInfo.status === "loading") {
+      // Reset injected state on page reload
+      chrome.storage.session.remove(`injected-${tabId}`);
+    }
+
+    if (changeInfo.status === "complete") {
+      chrome.storage.session.get(`injected-${tabId}`, (result) => {
+        if (!result[`injected-${tabId}`]) {
+          // Inject JS file
+          chrome.scripting.executeScript({
+            target: { tabId },
+            files: ["js/rendogtv.js"],
+          });
+
+          // Inject CSS file
+          chrome.scripting.insertCSS({
+            target: { tabId },
+            files: ["css/rendogtv.css"],
+          });
+
+          // Mark the tab as injected
+          chrome.storage.session.set({ [`injected-${tabId}`]: true });
+        }
+      });
+    }
+  }
+});
+
+// Clear state when a tab is closed
+chrome.tabs.onRemoved.addListener((tabId) => {
+  chrome.storage.session.remove(`injected-${tabId}`);
+});
+
 const validExtensionOrigins = [
   "http://localhost",
   "https://renbot.net",

@@ -7,15 +7,24 @@
 
 .renbot-punishable-button {
   display: inline-block !important;
-  width: 1.5rem;
-  height: 2rem;
+  width: 16px;
+  height: 16px !important;
+}
+
+div:has(> .renbot-punishable) {
+  display: inline-flex !important;
+}
+
+div:has(> .renbot-punishable) > * {
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .renbot-punishable-button svg {
   fill: currentColor;
 }
 
-.renbot-dialog {
+.renbot-dialog[open] {
   display: grid;
   place-content: center;
   width: 100%;
