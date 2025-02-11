@@ -4,7 +4,7 @@ const validExternalOrigins = ["http://localhost", "https://renbot.net"];
 
 let domain = "https://renbot.net";
 
-if (chrome.runtime.id === "komdeaocjociimaeieplaehfieihgcoi") {
+if (chrome.runtime.id === "hpcgmfbjfmgibnpfhencmldplmadiahj") {
   domain = "http://localhost";
 }
 

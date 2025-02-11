@@ -4,13 +4,13 @@ import browser from "webextension-polyfill";
 
 let domain = "https://renbot.net";
 
-if (browser.runtime.id === "komdeaocjociimaeieplaehfieihgcoi") {
+if (browser.runtime.id === "hpcgmfbjfmgibnpfhencmldplmadiahj") {
   domain = "http://localhost";
 }
 
 const rawToken = await browser.storage.local.get("token");
 
-const token = ref<string | null>(rawToken?.token);
+const token = ref<string | null>(rawToken?.token as string | null);
 const tokenValid = ref(null as boolean | null);
 
 browser.storage.local.onChanged.addListener((changes: any) => {
