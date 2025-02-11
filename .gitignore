@@ -14,6 +14,9 @@ dist-ssr
 coverage
 *.local
 
+dist.crx
+dist.pem
+
 /cypress/videos/
 /cypress/screenshots/
 
